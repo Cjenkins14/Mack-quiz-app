@@ -1,0 +1,23 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/MackinacIslandDowntown.jpg/1200px-MackinacIslandDowntown.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    text-align: center;
+    background: none;
+}
+
+.start {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    background-color: orange;
+}
+

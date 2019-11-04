@@ -1,5 +1,8 @@
-// start quiz func
-$
+// set variables for question and score tracker
+let questionNumber = 0;
+let score = 0;
+
+// begin quiz function for landing page
 function beginQuiz() {
     console.log('beginQuiz ran');
     $('#js-begin').on('click', function(event) {
@@ -10,11 +13,11 @@ function beginQuiz() {
 
 };
 
-// render ques func
+// render question from data stored in quest.js
 function renderQuestion() {
     console.log('renderQuestion ran');
-    let questionCount = updateCount();
-    let currentQuestion = STORE[questionCount].question;
+    let currentQuestion = STORE[questionNumber].question;
+    
     let questionText = $(`
     <div>
         <form id="js-questions" class="form-question">
@@ -24,7 +27,7 @@ function renderQuestion() {
                 </div>
 
                 <div class="options-list'>
-                    <div class="js-options"></div>
+                    <div class=".js-options"></div>
                 </div>
 
                 <div class="js-submit-button">
@@ -36,36 +39,52 @@ function renderQuestion() {
     </div>`);
 $("main").html(questionText);
 
-// updateAnswers();
+updateAnswers();
+
+
 };
 
-// Update Answers
+
+// render answers from data stored in quest.js
 function updateAnswers() {
 console.log('updateAnswers ran');
+let answerText= STORE[questionNumber].options;
+var x;
+for(x of answerText);
+    $('.js-options').prepend(`<input type="radio" name="answers" value="${x}">${x}<br>`);
+    
 };
 
-// question and score
+// update the score and question number functions
 function updateScore() {
 console.log('updateScore ran');
 };
 
-function updateCount() {
+function updateQuestionCount() {
 console.log('updateCount ran');
-for(i = 0; i < STORE.length; i++) {
-    let count = [i];
-    console.log(count);
-}
-    return count;
+questionNumber++;
+console.log(questionNumber);
+
+    return questionNumber;
 };
 
-// answer check, submit button
+// check answers for correct item after submit button is pushed
 function checkAnswers() {
 console.log('checkAnswers ran');
+$('js-submit').on('click', function () {
+
+})
+
 };
 
 // restart quiz
 function restartQuiz() {
 console.log('restartQuiz ran');
+$('.js-restart').on('click', function(event){
+questionNumber = 0;
+score = 0;
+beginQuiz;
+});
 };
 // handlequiz
 function handleQuiz() {

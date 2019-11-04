@@ -5,8 +5,9 @@
 
 body {
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/MackinacIslandDowntown.jpg/1200px-MackinacIslandDowntown.jpg");
-    background-size: auto;
+    background-size: 100%;
     background-repeat: no-repeat;
+    font-size: 1.5em;
 }
 
 .background-box {
@@ -20,6 +21,14 @@ body {
     align-content: left;
 }
 
+.inline {
+    display: inline-block;
+    padding: 10px;
+}
+
+.js-count-score {
+    text-align: center;;
+}
 
 
 

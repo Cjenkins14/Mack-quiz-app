@@ -1,3 +1,9 @@
+/*FOR MENTOR MEETING- 
+required radio button attribute 
+questionCount not updating on restart
+*/
+
+
 // set variables for question and score tracker
 let questionNumber = 0;
 let score = 0;
@@ -43,6 +49,7 @@ function renderQuestion() {
     </div>`);
 $("main").html(questionText);
 $('.js-count-score').removeClass('hidden');
+$('.js-count').removeClass('hidden');
 updateAnswers();
 };
 
@@ -55,7 +62,7 @@ let answerText= STORE[questionNumber].options;
 var x;
 for(x of answerText) {
     console.log(x);
-    $('#questionList').append(`<input type="radio" name="answers" value="${x}" required>${x}<br>`);
+    $('#questionList').append(`<label><input type="radio" name="answers" value="${x}" required="required"/>${x}</label><br>`);
 }
 };
 
@@ -128,10 +135,10 @@ function nextQuestion() {
             updateQuestionCount();
             renderQuestion();
         }
-        else if(questionNumber = 8) {
-            $('js-next').addClass('.hidden');
-            $('#js-result').removeClass('.hidden');
-        }
+        else
+            $('.js-next').addClass("hidden");
+            $('#js-result').removeClass("hidden");
+        
     console.log('nextQuestion ran')
     });
 };
@@ -141,22 +148,26 @@ function nextQuestion() {
 // Display results once no more questions are left
 function displayResults() {
     $('main').on('click', '#js-result', function (event) {
+    $(".js-count").addClass("hidden");
     if(score >= 7){
         $('main').html(`
         <div class="result-screen">
             <h1>Congratulations, you must be a Michigander!</h1>
+            <button type="button" class="js-restart">Restart!</button>
         </div>`);
     }
     else if(score < 7 && score > 5) {
         $('main').html(`
         <div class="result-screen">
             <h1>Good job!</h1>
+            <button type="button" class="js-restart">Restart!</button>
         </div>`);
     }
     else {
         $('main').html(`
         <div class="result-screen">
             <h1>Maybe you need a vacation?</h1>
+            <button type="button" class="js-restart">Restart!</button>
         </div>`);
     };
 })
@@ -167,10 +178,12 @@ function displayResults() {
 // restart quiz
 function restartQuiz() {
 console.log('restartQuiz ran');
-$('.js-restart').on('click', function(event){
+$('main').on('click', '.js-restart', function(event) {
 questionNumber = 0;
 score = 0;
-beginQuiz;
+console.log(questionNumber);
+console.log(score);
+renderQuestion();
 });
 };
 

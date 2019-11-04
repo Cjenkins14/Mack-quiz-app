@@ -21,3 +21,15 @@ h1 {
     background-color: orange;
 }
 
+.wrong-screen {
+    color: white;
+
+}
+
+.correct-screen {
+    color: white;
+}
+
+.hidden {
+    display: none;
+}

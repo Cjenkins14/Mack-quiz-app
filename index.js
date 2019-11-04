@@ -1,6 +1,7 @@
 /*FOR MENTOR MEETING- 
 required radio button attribute 
 questionCount not updating on restart
+why is container moving with submit and next button
 */
 
 
@@ -29,7 +30,7 @@ function renderQuestion() {
     let currentQuestion = STORE[questionNumber].question;
     
     let questionText = $(`
-    <div>
+    <div class= "questions-contain>
         <form id="js-questions" class="form-question">
             <fieldset>
                 <div class="question-block">
@@ -40,11 +41,8 @@ function renderQuestion() {
                     <div class=".js-options" id="questionList"></div>
                 </div>
 
-                <div class="js-submit-button">
-                    <button type="button" id="js-submit">Submit</button>
-                </div>
-
             </fieldset>
+            <button type="button" id="js-submit">Submit</button>
         </form>
     </div>`);
 $("main").html(questionText);
@@ -93,38 +91,42 @@ $('.js-count').html(`
 function checkAnswers() {
 $('main').on('click', '#js-submit', function (event) {
     let rightAnswer = STORE[questionNumber].rightAnswer;
-    let correctScreen = $(`
-    <div class="correct-screen">
-        <h1>That's correct!</h1>
-        <p>Let's keep moving</p>
-        <div class="js-next-button">
-            <button type="button" class="js-next">Next</button>
-            <button type="button" class="js-result hidden">Results</button>
-        </div>
-    </div>
-    `)
-    let wrongScreen = $(`
-    <div class="wrong-screen">
-        <h1>That's incorrect!</h1>
-        <p>The correct answer is ${rightAnswer}</p>
-        <div class="js-next-result-button">
-            <button type="button" class="js-next">Next</button>
-            <button type="button" class="hidden" id="js-result">Results</button>
-        </div>
-    </div>
-    `)
     if ($("input[name='answers']:checked").val() === rightAnswer) {
-        $("main").html(correctScreen);
+        correctScreen();
         updateScore();
     }
     else {
-        $("main").html(wrongScreen);
+        wrongScreen();
     }
     console.log('checkAnswers ran');
     
 });
 };
 
+function correctScreen() {
+    $("main").html(`
+    <div class="correct-screen">
+        <h1>That's correct!</h1>
+        <img src="https://image.mlive.com/home/mlive-media/width600/img/entertainment_impact/photo/sheplers-ferry-9370319ac8906126jpg-7830e8039c4462bb.jpg
+        " alt="Mackinac island shepler's ferry" id="correctFerry"/>
+        <p>Let's keep moving</p>
+        <button type="button" class="js-next">Next</button>
+        <button type="button" class="hidden" id="js-result">Results</button>
+    </div>
+    `);
+};
+
+function wrongScreen() {
+    let rightAnswer = STORE[questionNumber].rightAnswer;
+    $("main").html(`
+    <div class="wrong-screen">
+        <h1>That's incorrect!</h1>
+        <p>The correct answer is: ${rightAnswer}</p>
+        <button type="button" class="js-next">Next</button>
+        <button type="button" class="hidden" id="js-result">Results</button>
+    </div>
+    `);
+};
 
 
 // next button function to advance questions and show result button
@@ -167,6 +169,8 @@ function displayResults() {
         $('main').html(`
         <div class="result-screen">
             <h1>Maybe you need a vacation?</h1>
+            <img src="http://www.drhartnell.com/uploads/1/2/1/5/12150034/8204751_orig.jpg
+            " alt="Mackinac island aerial view" id="vaca-photo"/>
             <button type="button" class="js-restart">Restart!</button>
         </div>`);
     };

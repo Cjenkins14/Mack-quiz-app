@@ -5,13 +5,30 @@
 
 body {
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/MackinacIslandDowntown.jpg/1200px-MackinacIslandDowntown.jpg");
-    background-size: 100%;
+    background-size: auto;
     background-repeat: no-repeat;
 }
 
-h1 {
+fieldset, .wrong-screen, .correct-screen {
+    border: 2px white;
+    width: 50%;
+    margin: auto auto auto;
+    background: linear-gradient(#fafafa, #9aa2fa)
+}
+
+.js-count, .js-score {
+    display:  
+}
+
+
+
+h1, p {
     text-align: center;
-    background: none;
+}
+
+button {
+    display: block;
+    margin: auto auto;
 }
 
 .start {
@@ -21,15 +38,29 @@ h1 {
     background-color: orange;
 }
 
-.wrong-screen {
-    color: white;
 
-}
-
-.correct-screen {
-    color: white;
-}
 
 .hidden {
     display: none;
+}
+
+#correctFerry, #vaca-photo {
+    display: block;
+    height: 30%;
+    width: 30%;
+    margin: auto auto;
+    
+}
+
+
+}
+@media screen and (min-width: 400px) {
+
+}
+
+@media screen and (min-width: 700px) {
+
+}
+
+@media screen and (min-width: 900px) {
 }

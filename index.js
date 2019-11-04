@@ -30,17 +30,15 @@ function renderQuestion() {
     let currentQuestion = STORE[questionNumber].question;
     
     let questionText = $(`
-    <div class= "questions-contain>
+    <div class= "questions-contain background-box">
         <form id="js-questions" class="form-question">
-            <fieldset>
-                <div class="question-block">
-                    <legend>${currentQuestion}</legend>      
+            <fieldset class="background-box">
+                <div class="question-block text-left">
+                    <legend>${currentQuestion}</legend>
+                    <div class="options-list'>
+                        <div class=".js-options" id="questionList"></div>
+                    </div>
                 </div>
-
-                <div class="options-list'>
-                    <div class=".js-options" id="questionList"></div>
-                </div>
-
             </fieldset>
             <button type="button" id="js-submit">Submit</button>
         </form>
@@ -105,7 +103,7 @@ $('main').on('click', '#js-submit', function (event) {
 
 function correctScreen() {
     $("main").html(`
-    <div class="correct-screen">
+    <div class="correct-screen background-box">
         <h1>That's correct!</h1>
         <img src="https://image.mlive.com/home/mlive-media/width600/img/entertainment_impact/photo/sheplers-ferry-9370319ac8906126jpg-7830e8039c4462bb.jpg
         " alt="Mackinac island shepler's ferry" id="correctFerry"/>
@@ -119,7 +117,7 @@ function correctScreen() {
 function wrongScreen() {
     let rightAnswer = STORE[questionNumber].rightAnswer;
     $("main").html(`
-    <div class="wrong-screen">
+    <div class="wrong-screen background-box">
         <h1>That's incorrect!</h1>
         <p>The correct answer is: ${rightAnswer}</p>
         <button type="button" class="js-next">Next</button>
@@ -153,21 +151,21 @@ function displayResults() {
     $(".js-count").addClass("hidden");
     if(score >= 7){
         $('main').html(`
-        <div class="result-screen">
+        <div class="result-screen background-box">
             <h1>Congratulations, you must be a Michigander!</h1>
             <button type="button" class="js-restart">Restart!</button>
         </div>`);
     }
     else if(score < 7 && score > 5) {
         $('main').html(`
-        <div class="result-screen">
+        <div class="result-screen background-box">
             <h1>Good job!</h1>
             <button type="button" class="js-restart">Restart!</button>
         </div>`);
     }
     else {
         $('main').html(`
-        <div class="result-screen">
+        <div class="result-screen background-box">
             <h1>Maybe you need a vacation?</h1>
             <img src="http://www.drhartnell.com/uploads/1/2/1/5/12150034/8204751_orig.jpg
             " alt="Mackinac island aerial view" id="vaca-photo"/>

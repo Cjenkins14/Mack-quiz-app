@@ -9,16 +9,18 @@ body {
     background-repeat: no-repeat;
 }
 
-fieldset, .wrong-screen, .correct-screen {
-    border: 2px white;
-    width: 50%;
+.background-box {
+    border: none;
+    width: 75%;
     margin: auto auto auto;
     background: linear-gradient(#fafafa, #9aa2fa)
 }
 
-.js-count, .js-score {
-    display:  
+.text-left {
+    align-content: left;
 }
+
+
 
 
 
@@ -53,7 +55,7 @@ button {
 }
 
 
-}
+
 @media screen and (min-width: 400px) {
 
 }

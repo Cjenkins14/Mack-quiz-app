@@ -24,11 +24,11 @@ const STORE = [
     },
 // 3
     {
-        question: "Why is mackinac island considered a step into the past?",
+        question: "Why is mackinac island a step into the past?",
         options: [
-            "Cell phones don't work on the island",
-            "There is no electricity",
-            "Motor vehicles are banned on the island",
+            "Lack of cell service",
+            "Lack of electricity",
+            "Motor vehicles are banned",
             "The town looks very vintage"
         ],
         rightAnswer: "Motor vehicles are banned on the island"

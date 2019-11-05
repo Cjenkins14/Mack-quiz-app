@@ -156,12 +156,15 @@ function displayResults() {
             $('main').html(`
         <div class="result-screen background-box">
             <h1>Congratulations, you must be a Michigander!</h1>
+            <img src="http://www.grandhotel.com/wp-content/uploads/Sunset.jpg
+            " alt="mackinac island winter" id="winter-photo"/>
             <button type="button" class="js-restart">Restart!</button>
         </div>`);
-        } else if (score < 7 && score > 5) {
+        } else if (score < 7 && score > 4) {
             $('main').html(`
         <div class="result-screen background-box">
             <h1>Good job!</h1>
+            <img src="https://image.mlive.com/home/mlive-media/width600/img/entertainment_impact/photo/sheplers-ferry-9370319ac8906126jpg-7830e8039c4462bb.jpg" alt="Mackinac island sheplers ferry" id="ferry-photo"/>
             <button type="button" class="js-restart">Restart!</button>
         </div>`);
         } else {

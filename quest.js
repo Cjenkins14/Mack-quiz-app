@@ -31,7 +31,7 @@ const STORE = [
             "Motor vehicles are banned",
             "The town looks very vintage"
         ],
-        rightAnswer: "Motor vehicles are banned on the island"
+        rightAnswer: "Motor vehicles are banned"
     },
 // 4
     {

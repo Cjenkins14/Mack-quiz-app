@@ -92,12 +92,19 @@ button {
     display: none;
 }
 
-#correctFerry, #vaca-photo {
+#ferry-photo, #vaca-photo {
     display: block;
     height: 30%;
     width: 30%;
     margin: auto auto;
     
+}
+
+#winter-photo {
+    display: block;
+    height: 40%;
+    width: 40%;
+    margin: auto auto;
 }
 
 

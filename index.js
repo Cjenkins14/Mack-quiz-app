@@ -31,16 +31,16 @@ function renderQuestion() {
     let questionText = `
     <div class= "questions-contain background-box">
         <form id="js-questions" class="form-question">
-            <fieldset class="background-box">
+            <fieldset>
                 <div class="question-block text-left">
                     <legend>${currentQuestion}</legend>
                     <div class="options-list'>
                         <div class=".js-options" id="questionList"></div>
                     </div>
+                    <button type="button" id="js-submit">Find out!</button>
                 </div>
             </fieldset>
         </form>
-    <button type="button" id="js-submit">Submit</button>
     </div>`;
     $("main").html(questionText);
     $('.js-count-score').removeClass('hidden');
@@ -93,7 +93,7 @@ function validateAnswers() {
             checkAnswers();
         }
         else 
-            alert(`Please select an option`)
+            alert(`Please select an answer before proceeding`)
     })
 };
 
@@ -114,12 +114,8 @@ function correctScreen() {
     $("main").html(`
     <div class="correct-screen background-box">
         <h1>That's correct!</h1>
-        <img src="https://image.mlive.com/home/mlive-media/width600/img/entertainment_impact/photo/sheplers-ferry-9370319ac8906126jpg-7830e8039c4462bb.jpg
-        " alt="Mackinac island shepler's ferry" id="correctFerry"/>
         <p>Let's keep moving</p>
         <button type="button" class="js-next">Next</button>
-// remove results button, show results on last click
-        <button type="button" class="hidden" id="js-result">Results</button>
     </div>
     `);
 };
@@ -131,7 +127,6 @@ function wrongScreen() {
         <h1>That's incorrect!</h1>
         <p>The correct answer is: ${rightAnswer}</p>
         <button type="button" class="js-next">Next</button>
-        
     </div>
     `);
 };

@@ -131,7 +131,7 @@ function wrongScreen() {
         <h1>That's incorrect!</h1>
         <p>The correct answer is: ${rightAnswer}</p>
         <button type="button" class="js-next">Next</button>
-        <button type="button" class="hidden" id="js-result">Results</button>
+        
     </div>
     `);
 };
@@ -144,11 +144,11 @@ function nextQuestion() {
         if (questionNumber <= 7) {
             updateQuestionCount();
             renderQuestion();
-        } else
+        } else if (questionNumber == 8) {
             $('.js-next').addClass("hidden");
-        $('#js-result').removeClass("hidden");
-
-        console.log('nextQuestion ran')
+            displayResults();
+        };
+            console.log('nextQuestion ran');
     });
 };
 
@@ -156,7 +156,6 @@ function nextQuestion() {
 
 // Display results once no more questions are left
 function displayResults() {
-    $('main').on('click', '#js-result', function(event) {
         $(".js-count").addClass("hidden");
         if (score >= 7) {
             $('main').html(`
@@ -179,7 +178,7 @@ function displayResults() {
             <button type="button" class="js-restart">Restart!</button>
         </div>`);
         };
-    })
+    console.log('displayResults ran')
 };
 
 
@@ -208,7 +207,7 @@ function handleQuiz() {
     restartQuiz();
     validateAnswers();
     nextQuestion();
-    displayResults();
+    
     
 }
 

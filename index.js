@@ -16,8 +16,7 @@ function beginQuiz() {
     console.log('beginQuiz ran');
     $('#js-begin').on('click', function(event) {
         renderQuestion();
-    }
-    );
+    });
 
 
 };
@@ -28,8 +27,8 @@ function beginQuiz() {
 function renderQuestion() {
     console.log('renderQuestion ran');
     let currentQuestion = STORE[questionNumber].question;
-    
-    let questionText = $(`
+
+    let questionText = `
     <div class= "questions-contain background-box">
         <form id="js-questions" class="form-question">
             <fieldset class="background-box">
@@ -40,65 +39,75 @@ function renderQuestion() {
                     </div>
                 </div>
             </fieldset>
-            <button type="button" id="js-submit">Submit</button>
         </form>
-    </div>`);
-$("main").html(questionText);
-$('.js-count-score').removeClass('hidden');
-$('.js-count').removeClass('hidden');
-updateAnswers();
+    <button type="button" id="js-submit">Submit</button>
+    </div>`;
+    $("main").html(questionText);
+    $('.js-count-score').removeClass('hidden');
+    $('.js-count').removeClass('hidden');
+
+    updateAnswers();
 };
 
 
 
 // render answers from data stored in quest.js
 function updateAnswers() {
-console.log('updateAnswers ran');
-let answerText= STORE[questionNumber].options;
-var x;
-for(x of answerText) {
-    console.log(x);
-    $('#questionList').append(`<label><input type="radio" name="answers" value="${x}" required="required"/>${x}</label><br>`);
-}
+    console.log('updateAnswers ran');
+    let answerText = STORE[questionNumber].options;
+    var x;
+    for (x of answerText) {
+        console.log(x);
+        // replace reqd with validate function that checks for a checked item 
+        $('#questionList').append(`<label><input type="radio" name="answers" value="${x}"/>${x}</label><br>`);
+    }
 };
 
 
 
 // update the score and question number functions
 function updateScore() {
-console.log('updateScore ran');
-score++;
-console.log(score);
-$('.js-score').html(`
+    console.log('updateScore ran');
+    score++;
+    console.log(score);
+    $('.js-score').html(`
 <p>Current Score: ${score}/9</p>`)
     return score;
 };
 
 function updateQuestionCount() {
-console.log('updateQuestionCount ran');
-questionNumber++;
-console.log(questionNumber);
-$('.js-count').html(`
+    console.log('updateQuestionCount ran');
+    questionNumber++;
+    console.log(questionNumber);
+    $('.js-count').html(`
 <p>Question Number: ${questionNumber + 1}/9</p>`)
     return questionNumber;
 };
 
 
+// validate answers
+function validateAnswers() {
+    $('main').on('click', '#js-submit', function(event) {
+        event.preventDefault();
+        if($("input[name='answers']").is(":checked")) {
+            checkAnswers();
+        }
+        else 
+            alert(`Please select an option`)
+    })
+};
+
 
 // check answers for correct item after submit button is pushed
 function checkAnswers() {
-$('main').on('click', '#js-submit', function (event) {
     let rightAnswer = STORE[questionNumber].rightAnswer;
     if ($("input[name='answers']:checked").val() === rightAnswer) {
         correctScreen();
         updateScore();
-    }
-    else {
+    } else {
         wrongScreen();
     }
     console.log('checkAnswers ran');
-    
-});
 };
 
 function correctScreen() {
@@ -109,6 +118,7 @@ function correctScreen() {
         " alt="Mackinac island shepler's ferry" id="correctFerry"/>
         <p>Let's keep moving</p>
         <button type="button" class="js-next">Next</button>
+// remove results button, show results on last click
         <button type="button" class="hidden" id="js-result">Results</button>
     </div>
     `);
@@ -129,17 +139,16 @@ function wrongScreen() {
 
 // next button function to advance questions and show result button
 function nextQuestion() {
-    $('main').on('click', '.js-next', function (event) {
+    $('main').on('click', '.js-next', function(event) {
         console.log(questionNumber);
-        if(questionNumber <= 7) {
+        if (questionNumber <= 7) {
             updateQuestionCount();
             renderQuestion();
-        }
-        else
+        } else
             $('.js-next').addClass("hidden");
-            $('#js-result').removeClass("hidden");
-        
-    console.log('nextQuestion ran')
+        $('#js-result').removeClass("hidden");
+
+        console.log('nextQuestion ran')
     });
 };
 
@@ -147,56 +156,60 @@ function nextQuestion() {
 
 // Display results once no more questions are left
 function displayResults() {
-    $('main').on('click', '#js-result', function (event) {
-    $(".js-count").addClass("hidden");
-    if(score >= 7){
-        $('main').html(`
+    $('main').on('click', '#js-result', function(event) {
+        $(".js-count").addClass("hidden");
+        if (score >= 7) {
+            $('main').html(`
         <div class="result-screen background-box">
             <h1>Congratulations, you must be a Michigander!</h1>
             <button type="button" class="js-restart">Restart!</button>
         </div>`);
-    }
-    else if(score < 7 && score > 5) {
-        $('main').html(`
+        } else if (score < 7 && score > 5) {
+            $('main').html(`
         <div class="result-screen background-box">
             <h1>Good job!</h1>
             <button type="button" class="js-restart">Restart!</button>
         </div>`);
-    }
-    else {
-        $('main').html(`
+        } else {
+            $('main').html(`
         <div class="result-screen background-box">
             <h1>Maybe you need a vacation?</h1>
             <img src="http://www.drhartnell.com/uploads/1/2/1/5/12150034/8204751_orig.jpg
             " alt="Mackinac island aerial view" id="vaca-photo"/>
             <button type="button" class="js-restart">Restart!</button>
         </div>`);
-    };
-})
+        };
+    })
 };
 
 
 
 // restart quiz
 function restartQuiz() {
-console.log('restartQuiz ran');
-$('main').on('click', '.js-restart', function(event) {
-questionNumber = 0;
-score = 0;
-console.log(questionNumber);
-console.log(score);
-renderQuestion();
-});
+    console.log('restartQuiz ran');
+    $('main').on('click', '.js-restart', function(event) {
+        questionNumber = 0;
+        score = 0;
+        renderHeader();
+        renderQuestion();
+    });
 };
+
+// render new scores and count in header
+function renderHeader() {
+    $('.js-count').html('<p>Question Number: 1/9</p>');
+    $('.js-score').html('<p>Current Score: 0/9');
+}
 
 // handlequiz
 function handleQuiz() {
     console.log('handleQuiz ran');
     beginQuiz();
     restartQuiz();
-    checkAnswers();
+    validateAnswers();
     nextQuestion();
     displayResults();
+    
 }
 
 $(handleQuiz);

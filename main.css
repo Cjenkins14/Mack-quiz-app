@@ -13,8 +13,10 @@ body {
 .background-box {
     border: none;
     width: 75%;
-    margin: auto auto auto;
+    height: 50%;
+    margin: auto auto;
     background: linear-gradient(#fafafa, #9aa2fa)
+    
 }
 
 .text-left {

@@ -17,7 +17,7 @@ const STORE = [
             "Lake Superior",
             "Lake Michigan",
             "Lake Huron",
-            "Saul St. Marie"
+            "Sault St. Marie"
         ],
         rightAnswer: "Lake Huron"
 

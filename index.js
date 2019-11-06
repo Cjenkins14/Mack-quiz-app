@@ -152,6 +152,8 @@ function nextQuestion() {
 // Display results once no more questions are left
 function displayResults() {
         $(".js-count").addClass("hidden");
+        $('.js-score').html(`
+        <p>Final Score: ${score}/9</p>`)
         if (score >= 7) {
             $('main').html(`
         <div class="result-screen background-box">

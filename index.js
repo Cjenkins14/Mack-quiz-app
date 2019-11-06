@@ -29,8 +29,8 @@ function renderQuestion() {
     let currentQuestion = STORE[questionNumber].question;
 
     let questionText = `
-    <div class= "questions-contain background-box">
-        <form id="js-questions" class="form-question">
+    <div class= "questions-contain">
+        <form id="js-questions" class="background-box">
             <fieldset>
                 <div class="question-block text-left">
                     <legend>${currentQuestion}</legend>

@@ -6,45 +6,70 @@
 body {
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/MackinacIslandDowntown.jpg/1200px-MackinacIslandDowntown.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
-    font-size: 1.5em;
+    height: auto;
+    font-size: .75em;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
+header {
+    display: flex;
+    justify-content: center;
+}
+
+h1, p {
+    text-align: center;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
 .quiz-title {
-    position: fixed;
+    display: flex;
+    justify-content: center;
     left: 25%;
     width: 50%;
     height: 15%
 }
 
+.questions-contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 fieldset {
+    display: flex;
     border: none;
 }
 
 #js-submit {
     border-radius: 3px;
     align-self: center;
-    top: 90%;
-    
+    align-items: flex-end;
     
 }
 .background-box {
     display: flex;
-    align-content: center;
+    justify-content: center;
     border: none;
     border-radius: 5px;
-    width: 40%;
-    height: 45%;
-    position: fixed;
-    left: 30%;
-    top: 35%;
     background: linear-gradient(#fafafa, #9aa2fa)
     
 }
 
 .correct-screen, .wrong-screen, .result-screen {
     flex-direction: column;
+    align-items: center;
 }
 
 .text-left {
@@ -53,28 +78,27 @@ fieldset {
     align-content: left;
 }
 
-.inline {
-    display: inline-block;
-    padding: 10px;
-}
 
 .js-count-score {
+    display: flex;
+    flex-direction: row;
     text-align: center;
     color: white;
-    
 }
 
 .js-next {
     border-radius: 3px;
-    position: absolute;
     align-self: center;
     top: 90%
 }
 
-
-h1, p {
-    text-align: center;
+.quiz-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+
 
 button {
     display: block;
@@ -107,35 +131,15 @@ button {
     margin: auto auto;
 }
 
-
-
-@media screen and (min-width: 300px) {
-    body {
-        display: flex;
-        font-size: 1em;
-        background-size: cover;
-        background-repeat: none;
-    }
-
-    header {
-        font-size: .75em;
-    }
-
-
-}
-
 @media screen and (min-width: 700px) {
-    body {
-        display: flex;
-        font-size: 1em;
-        background-size: 100%;
-        background-repeat: space;
-    }
-    header > h1 {
-        font-size: 1em;
+    .js-count-score {
+        text-align: center;
     }
 
 }
 
 @media screen and (min-width: 900px) {
+    body {
+        background-size: auto;
+    }
 }

@@ -84,6 +84,7 @@ fieldset {
     flex-direction: row;
     text-align: center;
     color: white;
+    
 }
 
 .js-next {
@@ -132,14 +133,23 @@ button {
 }
 
 @media screen and (min-width: 700px) {
+    body {
+        font-size: 1em;
+    }
     .js-count-score {
         text-align: center;
+        color: black;
     }
 
 }
 
 @media screen and (min-width: 900px) {
     body {
-        background-size: auto;
+        background-size: cover;
+        font-size: 1.5em;
+    }
+
+    .js-count-score {
+        color: black;
     }
 }
